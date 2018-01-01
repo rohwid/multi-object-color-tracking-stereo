@@ -1,0 +1,21 @@
+Pasca 1
+-----------------
+int iLowH = 40;
+int iHighH = 90;
+
+int iLowS = 64;
+int iHighS = 255;
+
+int iLowV = 77;
+int iHighV = 255;
+
+B201 1
+-----------------
+int iLowH = 40;
+int iHighH = 78;
+
+int iLowS = 90;
+int iHighS = 255;
+
+int iLowV = 70;
+int iHighV = 255;
