@@ -53,9 +53,9 @@ int main( int argc, char** argv )
   namedWindow("Control", CV_WINDOW_AUTOSIZE);
 
   int iLowH = 40;
-  int iHighH = 80;
+  int iHighH = 78;
 
-  int iLowS = 60;
+  int iLowS = 90;
   int iHighS = 255;
 
   int iLowV = 70;
@@ -97,13 +97,30 @@ int main( int argc, char** argv )
       // threshold the image
       inRange(imgHSV[i], Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded[i]);
 
+      /*
+      // Memory for hough circles
+      CvMemStorage* storage = cvCreateMemStorage(0);
+
+      // hough detector works better with some smoothing of the image
+      cvSmooth(imgThresholded[i], imgThresholded[i], CV_GAUSSIAN, 9, 9);
+      CvSeq* circles = cvHoughCircles(imgThresholded[i], storage, CV_HOUGH_GRADIENT, 2, imgThresholded[i] -> height/4, 100, 50, 10, 400);
+
+      for (int j = 0; j < circles -> total; j++)
+      {
+        float* p = (float*)cvGetSeqElem(circles, j);
+        printf("Ball! x=%f y=%f r=%f\n\r",p[0],p[1],p[2]);
+        cvCircle(frame, cvPoint(cvRound(p[0]),cvRound(p[1])), 3, CV_RGB(0,255,0), -1, 8, 0);
+        cvCircle(frame, cvPoint(cvRound(p[0]),cvRound(p[1])), cvRound(p[2]), CV_RGB(255,0,0), 3, 8, 0);
+      }
+      */
+
       // morphological opening (removes small objects from the foreground) camera 1
-      erode(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
-      dilate(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
+      erode(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
+      dilate(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
 
       // morphological closing (removes small holes from the foreground) camera 1
-      dilate(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
-      erode(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
+      dilate(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
+      erode(imgThresholded[i], imgThresholded[i], getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
     }
 
     // calculate the moments of the thresholded image
@@ -148,7 +165,7 @@ int main( int argc, char** argv )
         int f = 550; // M1 (camera1) & M2 (camera2)
 
         // line A coord x1z1
-        float a_x1 = 0.5 * cx1;
+        float a_x1 = 0.5 * cx2;
         int a_z1 = -f;
 
         // line A coord x2z2
@@ -156,7 +173,7 @@ int main( int argc, char** argv )
         int a_z2 = 0;
 
         // line B coord x1z1
-        float b_x1 = 0.5 * cx2 + d;
+        float b_x1 = 0.5 * cx1 + d;
         int b_z1 = -f;
 
         // line B coord x2z2

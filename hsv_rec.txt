@@ -9,7 +9,7 @@ int iHighS = 255;
 int iLowV = 77;
 int iHighV = 255;
 
-B201 1
+B201
 -----------------
 int iLowH = 40;
 int iHighH = 78;
@@ -18,4 +18,15 @@ int iLowS = 90;
 int iHighS = 255;
 
 int iLowV = 70;
+int iHighV = 255;
+
+Visikom (Meja Pak Ulin)
+-----------------
+int iLowH = 50;
+int iHighH = 75;
+
+int iLowS = 30;
+int iHighS = 255;
+
+int iLowV = 0;
 int iHighV = 255;

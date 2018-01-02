@@ -175,7 +175,7 @@ void calibrateStereoCamera(Size imageSize) {
     for (int i=0; i<noOfStereoPairs; i++) {
         for (int j=0; j<boardSize.height; j++) {
             for (int k=0; k<boardSize.width; k++) {
-                objectPoints[i].push_back(Point3f(float(j)*2.6,float(k)*2.6,0.0)); //ukuran kotak
+                objectPoints[i].push_back(Point3f(float(j)*2.6,float(k)*2.6,0.0)); // ukuran kotak
             }
         }
     }
