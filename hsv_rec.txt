@@ -20,6 +20,17 @@ int iHighS = 255;
 int iLowV = 70;
 int iHighV = 255;
 
+B201 (Malam)
+-----------------
+int iLowH = 45;
+int iHighH = 75;
+
+int iLowS = 50;
+int iHighS = 255;
+
+int iLowV = 70;
+int iHighV = 255;
+
 Visikom (Meja Pak Ulin)
 -----------------
 int iLowH = 50;

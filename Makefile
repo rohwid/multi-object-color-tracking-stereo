@@ -1,9 +1,10 @@
 CC = g++
 CFLAGS = `pkg-config opencv --cflags --libs`
 TARGET = mocap
+HEADER = multitrack
 
 all:
-	$(CC) -o $(TARGET) $(TARGET).cpp $(CFLAGS)
+	$(CC) $(TARGET).cpp $(HEADER).h $(HEADER).cpp $(CFLAGS) -o $(TARGET)
 
 clean:
 	$(RM) $(TARGET)
